@@ -1,4 +1,4 @@
-package learning.adapter_pattern;
+package learning.desing_pattern.adapter_pattern;
 
 public class RemoteFileReaderAdapter implements FileReader {
     private RemoteFileReader remoteFileReader;

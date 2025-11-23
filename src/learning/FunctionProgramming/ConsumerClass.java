@@ -11,6 +11,5 @@ public class ConsumerClass {
         Consumer<String> printer = s -> System.out.println(s);
         List<String> list = Arrays.asList("apple", "banana", "cherry");
         list.forEach(printer);
-
     }
 }

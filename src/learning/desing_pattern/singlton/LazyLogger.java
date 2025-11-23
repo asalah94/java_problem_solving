@@ -1,4 +1,4 @@
-package learning;
+package learning.desing_pattern.singlton;
 
 public class LazyLogger {
 

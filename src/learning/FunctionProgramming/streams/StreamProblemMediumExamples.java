@@ -1,10 +1,58 @@
-package learning.streams;
+package learning.FunctionProgramming.streams;
 
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class StreamProblemSolvingExamples {
+public class StreamProblemMediumExamples {
+
+    public static void removeNull(){
+        List<String> list = Arrays.asList("Java", "", null, "Python", " ");
+
+        list.stream().filter(s-> s != null && !s.strip().isEmpty()).collect(Collectors.toList()).forEach(System.out::println);
+    }
+
+    public static void findMax(){
+        List<Integer> list = Arrays.asList(2,5,70,8,9,3);
+
+        Optional optional = list.stream().max(Integer::compare);
+        System.out.println(optional);
+    }
+
+
+    public static void descending(){
+        List<Integer> list = Arrays.asList(2,5,70,8,9,3);
+
+        list.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList()).forEach(System.out::println);
+
+    }
+
+    public static void groupByLength(){
+        List<String> names = Arrays.asList("Ahmed", "Ali", "Samar", "Noor");
+
+
+        Map<Integer, List<String>> length = names.stream().collect(Collectors.groupingBy(String::length));
+        System.out.println(length);
+    }
+
+    public static void totalElement(){
+        List<String> names = Arrays.asList("Ahmed", "Ali", "Samar", "Noor", "sayed omar");
+        names.stream().filter(n->n.length()>3).collect(Collectors.toList()).forEach(System.out::println);
+
+    }
+
+    public static void partitionBy(){
+        List<String> names = Arrays.asList("Ahmed", "Ali", "Samar", "Noor", "sayed omar");
+        Map<Boolean, List<String>> par = names.stream().collect(Collectors.partitioningBy(name -> name.length() > 4));
+        System.out.println(par);
+    }
+
+    public static  void findSecondHighest(){
+        List<Integer> numbers = Arrays.asList(5, 1, 8, 3, 8, 6);
+        Optional<Integer> secondHighest = numbers.stream().distinct().sorted(Comparator.reverseOrder()).skip(1).findFirst();
+        secondHighest.ifPresent(System.out::println);
+
+    }
 
     public static void findFirstEvenGreaterThan10() {
         List<Integer> numbers = Arrays.asList(3, 5, 12, 8, 14, 7);
@@ -99,6 +147,7 @@ public class StreamProblemSolvingExamples {
     }
 
     public static void main(String[] args) {
+        findSecondHighest();
         findFirstEvenGreaterThan10();
         convertToUpperAndSort();
         filterHighSalaryEmployees();
@@ -108,6 +157,7 @@ public class StreamProblemSolvingExamples {
         joinNames();
         findDuplicates();
         flatMapNestedList();
+
     }
 
     // Helper class

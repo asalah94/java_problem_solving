@@ -1,4 +1,4 @@
-package learning;
+package learning.problemSolving;
 
 
 import java.util.HashMap;
@@ -7,15 +7,23 @@ import java.util.Map;
 import java.util.Set;
 
 public class StringProblems {
-    public static StringBuilder reverseString(String input) {
-        int count = 0;
-        input = input.toLowerCase();
-        StringBuilder s = new StringBuilder();
-        char[]  ch = input.toCharArray();
-        for(int i = ch.length-1; i >= 0 ; i--){
-            s.append(ch[i]);
+
+
+    public static String reverseStr(String str) {
+        char[] characters = str.toCharArray();
+        int start = 0;
+        int end = characters.length - 1;
+
+        while (start < end) {
+            char temp = characters[start];
+            characters[start] = characters[end];
+            characters[end] = temp;
+
+            start++;
+            end--;
         }
-        return s;
+
+        return String.valueOf(characters);
     }
 
     public static StringBuilder removeDublicate(String input) {
@@ -42,7 +50,7 @@ public class StringProblems {
     }
 
     public static void main(String[] args) {
-        StringBuilder x= StringProblems.reverseString("ahmed");
+        String x= StringProblems.reverseStr("ahmed");
         System.out.println(x);
 
         StringBuilder y= StringProblems.removeDublicate("aahmeedfgggd");
